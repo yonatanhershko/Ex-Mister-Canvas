@@ -13,12 +13,14 @@ function drawDot(x, y) {
     gCtx.fill()
 }
 
-function drawTriangle(x, y) {
+function drawTriangle(x, y,m) {
+    var diff = m * 3
+
     gCtx.beginPath()
 
     gCtx.moveTo(x, y)
-    gCtx.lineTo(x + 80, y + 80)
-    gCtx.lineTo(x - 20, y + 100)
+    gCtx.lineTo(x + diff + 40, y + diff + 30);
+    gCtx.lineTo(x - diff - 40, y + diff + 30);
     gCtx.closePath()
     gCtx.lineWidth = 2
     gCtx.strokeStyle =getStrokeColor()
@@ -28,11 +30,13 @@ function drawTriangle(x, y) {
 
 }
 
-function drawRect(x, y) {
+function drawRect(x, y,m) {
+    const length = m * 4
+
     gCtx.beginPath()
 
     gCtx.lineWidth = 3
-    gCtx.rect(x, y, 120, 120)
+    gCtx.rect(x, y, length, length)
     gCtx.strokeStyle = getStrokeColor()
     gCtx.stroke()
     gCtx.fillStyle = getColor()
@@ -42,11 +46,13 @@ function drawRect(x, y) {
 }
 
 
-function drawArc(x, y) {
+function drawArc(x, y,m) {
+    const radius = m * 2
+
     gCtx.beginPath()
     gCtx.lineWidth = 3
 
-    gCtx.arc(x, y, 60, 0, Math.PI * 2) //* draws a circle
+    gCtx.arc(x, y,radius, 0, Math.PI * 2) //* draws a circle
     // gCtx.fillStyle = getColor()
     gCtx.strokeStyle = getStrokeColor()
     gCtx.stroke()

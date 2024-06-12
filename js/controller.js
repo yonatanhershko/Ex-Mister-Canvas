@@ -29,6 +29,7 @@ function onSetShape(shape) {
 //for one click
 function onDraw(ev) {
     const { offsetX, offsetY } = ev
+    const m = getMovement(ev)
     // console.log('Drawing at:', offsetX, offsetY)
 
     switch (gCurrShape) {
@@ -36,13 +37,13 @@ function onDraw(ev) {
             drawDot(offsetX, offsetY)
             break
         case 'triangle':
-            drawTriangle(offsetX, offsetY)
+            drawTriangle(offsetX, offsetY,m)
             break
         case 'rect':
-            drawRect(offsetX, offsetY)
+            drawRect(offsetX, offsetY,m)
             break
         case 'circle':
-            drawArc(offsetX, offsetY)
+            drawArc(offsetX, offsetY,m)
             break
     }
 }
@@ -65,19 +66,20 @@ function onMove(ev) {
     if (!gIsDrawing) return
     const pos = getEvPos(ev)
     const {x, y} = pos
+    const m = getMovement(ev)
   
     switch (gCurrShape) {
         case 'pen':
             drawDot(x, y)
             break
         case 'triangle':
-            drawTriangle(x, y)
+            drawTriangle(x, y, m)
             break
         case 'rect':
-            drawRect(x, y)
+            drawRect(x, y, m)
             break
         case 'circle':
-            drawArc(x, y)
+            drawArc(x, y, m)
             break
     }
     //* Calc the delta, the diff we moved
