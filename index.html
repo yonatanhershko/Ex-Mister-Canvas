@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>Mister Draw</title>
+</head>
+
+<body onload="onInit()">
+
+    <header>
+        <h1>Mister-Canvas🦔</h1>
+
+        <div class="top-nav">
+            <label for="color">Stroke Color:</label>
+            <input type="color" id="stroke-color" name="color" value="#DBF1E3" />
+            <label for="color"> Inside Color:</label>
+            <input type="color" id="color" name="color" value="#DBD8E3" />
+
+            <select class="shapeDropdown" onchange="onSetShape(this.value)">
+                <option value="">Choose Shape Mate</option>
+                <option value="pen">✏️</option>
+                <option value="triangle">🔺</option>
+                <option value="rect">◾</option>
+                <option value="circle">⭕</option>
+            </select>
+
+            <button onclick="onClearCanvas()">Clear</button>
+        </div>
+    </header>
+
+
+    <div class="canvas-container">
+        <canvas id="my-canvas" width="400" height="400" style="outline: 10px solid #7d7296"
+            onclick="drawRect(event)"></canvas>
+    </div>
+
+
+    <footer>
+        <h1>Upload and Share🦛</h1>
+        <div class="footer-nav">
+            <label for="file" class="footer-btn">Upload</label>
+            <input type="file" id="file" class="file-input btn" name="image" onchange="onImgInput(event)"
+                accept="image/*" /> <button class="footer-btn "><a href="#" onclick="downloadCanvas(this)"
+                    download>Download</a></button>
+            <button class="btn footer-btn " onclick="onUploadImg()">
+                Facebook
+            </button>
+            <button class="btn footer-btn" onclick="onSaveImg()">
+                Save
+            </button>
+        </div>
+    </footer>
+    <script src="./js/service.js"></script>
+    <script src="./js/controller.js"></script>
+    <script src="js/upload-from-local.js"></script>
+    <script src="js/sharing-on-facebook.js"></script>
+</body>
+
+</html>
